@@ -2,7 +2,7 @@
 
 Simple software to operate a contactless dispenser.
 
-Gives a given dose of liquid when activated if something (a hand?) is within reach
+Gives a single dose of liquid when activated if something (a hand?) is within reach
 
 Pumps some liquid back after distribution to avoid any dripping
 
