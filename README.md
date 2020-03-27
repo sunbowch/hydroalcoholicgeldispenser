@@ -8,7 +8,7 @@ In the present situation, in order to limit the contamination, hand cleaning is 
 
 In order to make it accessible to a maximum of builders, it is based on most common hardware that any owner of a 3D printer should have handy... Or can order to local suppliers.
 
-The design is based on NEMA-17 motors of any size, but to avoid using an external converter to power the arduino, a voltage <=12V is recommanded. So low resistance motors are prefered. Any standard 16 pins stepper driver can be used, and a sparkfun distance sensor (https://www.sparkfun.com/products/15569).
+The design is based on NEMA-17 motors of any size, but to avoid using an external converter to power the arduino, a voltage <=12V is recommended. So low resistance motors are prefered. Any standard 16 pins stepper driver can be used, and a sparkfun distance sensor (https://www.sparkfun.com/products/15569).
 
 If the pump is manufactured carefully and has the lowest possible operating torque without leakage, it is possible to power the system with a 9V battery. Depending on the pump quality, it is sufficient for about 5'000 doses, or about 5 liters of solution, or 100 hours of standby, if you also remove the power led resistor of the Arduino.
 
