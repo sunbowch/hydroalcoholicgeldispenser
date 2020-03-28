@@ -1,4 +1,5 @@
-//
+// ToDo: extend the class to other sensors
+
 // This class is for the Sparfun ultrasonic sensor
 // See https://www.sparkfun.com/products/15569 for the datasheet
 // Mostly inspired by the code example
