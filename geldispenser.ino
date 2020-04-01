@@ -15,6 +15,10 @@ sparkfun distance sensor, a stepper motor and and optionnal fuse.
 
 The stepper runs a 3D printed peristaltic pump that gives the dose.
 
+The dose can be ajusted by a trimmer, value read only during setup to spare power after.
+
+The same trimmer is used to tune the motor speed parameters with motortune.ino
+
 */
 #include <SimpleSleep.h>          //library to deep-sleep the mcu
 #include <AccelStepper.h>         //non-blocking stepper control library
@@ -27,22 +31,28 @@ The stepper runs a 3D printed peristaltic pump that gives the dose.
 #define trigPin 3                     // trigger pin of the sensor, ask for a measure
 #define echoPin 4                     // input pin of the sensor data, pulse length proportional to distance
 #define onPin 2                       // VCC pin of the sensor
+#define lowpotPin 13                  // Output pin next to trimpotPin, fixed to LOW
+#define trimpotPin A1                 // Pin for sensing the trimpot value used to tune the quantity.
+#define highpotPin A2                 // PIn next to A1, Output fixed to HIGH
 #define stepperspeed 500              // Tune these parameters for your stepper and
 #define stepperacceleration 15000     // power supply to get smooth operation
-#define stepsfordose 600              // tune for the desired quantity of liquid
+#define maxstepsfordose 600           // tune for the max desired quantity of liquid
+#define minstepsfordose 200           // tune for the min desired quantity of liquid
 #define backsteps 50                  // tune to avoid dripping
-#define minimumdistance 5             // to trigger the delivery
-#define maximumdistance 25            // to trigger the delivery
+#define minimumdistance 4             // cm to trigger the delivery
+#define maximumdistance 20            // cm to trigger the delivery
 
 AccelStepper stepper = AccelStepper(motorInterfaceType, stepPin, dirPin);
 distSensor sensor(trigPin,echoPin,onPin);
 SimpleSleep Sleep;
 int i;                              // counts the loops when the hand is within reach
+int stepsfordose;
 
 void setup() {
 
   sensor.setup();
   stepperSetup();
+  quantitySetup();
 }
 
 void loop() {
@@ -90,7 +100,7 @@ void squirt(){
 
   position = stepper.currentPosition()-backsteps;
   stepper.runToNewPosition(position);
-  stepper.setCurrentPosition(0);
+  stepper.setCurrentPosition(0);                                    //resets the stepper position for next run
   stepper.disableOutputs();     //powers off the stepper driver
 }
 
@@ -100,4 +110,21 @@ void stepperSetup(){
   stepper.setAcceleration(stepperacceleration);
   stepper.setEnablePin(enablePin);
   stepper.disableOutputs();        //powers off the stepper driver
+}
+
+int quantitySetup(){                          //reads the potentionmeter value and puts all the pins LOW after that to spare power
+  
+  int potvalue;
+  
+  pinMode(lowpotPin, OUTPUT);
+  pinMode(highpotPin, OUTPUT);
+  pinMode(A0, INPUT);
+  digitalWrite(highpotPin,HIGH);
+  digitalWrite(lowpotPin,LOW);
+  potvalue = analogRead(trimpotPin);
+  potvalue = map(potvalue,0,1023,minstepsfordose,maxstepsfordose);
+  pinMode(highpotPin,LOW);
+  pinMode(A0, OUTPUT);
+  pinMode(A0, LOW);
+  return potvalue;
 }
