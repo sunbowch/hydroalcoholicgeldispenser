@@ -31,7 +31,7 @@ The same trimmer is used to tune the motor speed parameters with motortune.ino
 #define trigPin 3                     // trigger pin of the sensor, ask for a measure
 #define echoPin 4                     // input pin of the sensor data, pulse length proportional to distance
 #define onPin 2                       // VCC pin of the sensor
-#define lowpotPin 13                  // Output pin next to trimpotPin, fixed to LOW
+#define lowpotPin A0                  // Output pin next to trimpotPin, fixed to LOW
 #define trimpotPin A1                 // Pin for sensing the trimpot value used to tune the quantity.
 #define highpotPin A2                 // PIn next to A1, Output fixed to HIGH
 #define stepperspeed 500              // Tune these parameters for your stepper and
@@ -118,13 +118,15 @@ int quantitySetup(){                          //reads the potentionmeter value a
   
   pinMode(lowpotPin, OUTPUT);
   pinMode(highpotPin, OUTPUT);
-  pinMode(A0, INPUT);
+  pinMode(trimpotPin, INPUT);
   digitalWrite(highpotPin,HIGH);
   digitalWrite(lowpotPin,LOW);
+  delayMicroseconds(20);
   potvalue = analogRead(trimpotPin);
   potvalue = map(potvalue,0,1023,minstepsfordose,maxstepsfordose);
   pinMode(highpotPin,LOW);
-  pinMode(A0, OUTPUT);
-  pinMode(A0, LOW);
+  for (int i = 8; i<=20; i++){
+    pinMode(i, OUTPUT);
+  }
   return potvalue;
 }
