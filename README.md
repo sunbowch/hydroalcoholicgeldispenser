@@ -12,7 +12,7 @@ The design is based on NEMA-17 motors of any lenght, but to avoid using an exter
 
 If the pump is manufactured carefully and has the lowest possible operating torque without leakage, it is possible to power the system with a 9V battery. Depending on the pump quality, it is sufficient for about 5'000 doses, or about 5 liters of solution, or 100 hours of standby, if you also remove the power led resistor of the Arduino.
 
-Here you will find also STL files to build the pump. It is designed for silicone tubing of 3 mm inner diameter and 0.5 mm thickness.
+Here you will find also STL files to build the pump. It is designed for silicone tubing of 3 mm inner diameter and 0.5 mm thickness. This is for testing as the rotor needs to be tuned. A parametric model will be supplied for this purpose.
 
 The schematics are available on : https://easyeda.com/sunbow/hydroalcoolicgeldispenser. It has been designed to be made with a solder strip grid board.
 
