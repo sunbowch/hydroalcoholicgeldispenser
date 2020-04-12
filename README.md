@@ -10,9 +10,11 @@ In order to make it accessible to a maximum of builders, it is based on most com
 
 The design is based on NEMA-17 motors of any lenght, but to avoid using an external converter to power the arduino, a voltage <=12V is recommended. So low resistance motors (rated with high current) are prefered. Any standard 16 pins stepper driver can be used, a sparkfun distance sensor (https://www.sparkfun.com/products/15569) and 2x 685 miniature ball bearings for the pump's rotor. This motors are the most common available and it is likely that any 3D printer user has some spare.
 
-If the pump is manufactured carefully and has the lowest possible operating torque without leakage, it is possible to power the system with a 9V battery. Depending on the pump quality, it is sufficient for about 5'000 doses, or about 5 liters of solution, or 100 hours of standby, if you also remove the power led resistor of the Arduino.
+The sensor is one of the most common and you can find clones for less than $1.
 
-Here you will find also STL files to build the pump. It is designed for silicone tubing of 3 mm inner diameter and 0.5 mm thickness. This is for testing as the rotor needs to be tuned. A parametric model will be supplied for this purpose.
+If the pump is manufactured carefully and has the lowest possible operating torque without leakage, it is possible to power the system with a 9V battery. Depending on the pump quality, it is sufficient for about 5'000 doses, or about 5 liters of solution, or 400 hours of standby, if you also remove the power led resistor of the Arduino.
+
+Here you will find also STL files to build the pump. It is designed for silicone tubing of 3 mm inner diameter and 0.5 mm thickness (5/32 od, 1/8 id, 1/64 wall thickness). This is for testing as the rotor needs to be tuned. A parametric model will be supplied for this purpose.
 
 The schematics are available on : https://easyeda.com/sunbow/hydroalcoolicgeldispenser. It has been designed to be made with a solder strip grid board.
 
