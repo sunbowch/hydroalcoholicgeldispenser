@@ -1,8 +1,11 @@
+/*  Software to test the motor and tune the speed and current
+    Moves the motor both directions 3 turns
+    Outputs the steps/sec of the motor on the serial port
+*/
 #include <AccelStepper.h>
 #include <MultiStepper.h>
 #include <Streaming.h>
 
-/**/
 #define stepPin 6
 #define dirPin 5
 #define motorInterfaceType 1
@@ -12,15 +15,6 @@
 unsigned long time,time1;
 
 AccelStepper stepper = AccelStepper(motorInterfaceType, stepPin, dirPin);
-
-void sequence(){
-  //stepper.enableOutputs();
-  stepper.setMaxSpeed(450);
-  stepper.runToNewPosition(600);
-  stepper.runToNewPosition(400);
-  stepper.setCurrentPosition(0);
-  //stepper.disableOutputs();
-}
 
 void stepperSetup(){
   // Set the maximum speed in steps per second:
@@ -50,7 +44,7 @@ void loop() {
   long dist;
   int i;
   int spd0,spdc;
-  if (millis()-time >=500){
+  if (millis()-time >=100){
     time=millis();
     int spd=analogRead(A1);
     if (spd != spd0){
