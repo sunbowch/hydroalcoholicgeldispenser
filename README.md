@@ -18,4 +18,4 @@ Here you will find also STL files to build the pump. It is designed for silicone
 
 The schematics are available on : https://easyeda.com/sunbow/hydroalcoolicgeldispenser. It has been designed to be made with a solder strip grid board.
 
-More parts will follow... And complete build informations.
+More information at https://contactlessdispenser.world/
